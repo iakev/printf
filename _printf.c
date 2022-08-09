@@ -58,6 +58,41 @@ void _print_n(char c, char d, unsigned int *i)
 }
 
 /**
+ * check_specifiers - checks for format specifiers and acts accordingly
+ * @v: format specifier to be checked
+ * @ap: variable argument pointer
+ * @i: an integer pointer to printf while loop iterator
+ * @count: pointer to number of characters printed by printf
+ * Return: Nothing
+ */
+void check_specifiers(va_list ap, char v, char x, unsigned int *count, unsigned int *i)
+{
+	unsigned int j;
+	prnt_t prnts[] = {
+		{"c", _print_c},
+		{"s", _print_s},
+		{NULL, NULL}
+	};
+
+	j = 0;
+	while (prnts[j].c != NULL)
+	{
+		if (x == *prnts[j].c)
+		{
+			prnts[j]._puts(ap, count);
+			break;
+		}
+		j++;
+	}
+	if (prnts[j].c == NULL)
+	{
+		_putchar(v);
+		(*count)++;
+	}
+	(*i) += (prnts[j].c  == NULL) ? 1 : 2;
+}
+
+/**
  * _printf - main function to print according to a format
  * @format: character strings composed of 0 or more directives
  *		and format specifiers
@@ -65,13 +100,8 @@ void _print_n(char c, char d, unsigned int *i)
  */
 int _printf(const char *format, ...)
 {
-	unsigned int i, j, count;
+	unsigned int i, count;
 	va_list ap;
-	prnt_t prnts[] = {
-		{"c", _print_c},
-		{"s", _print_s},
-		{NULL, NULL}
-	};
 
 	va_start(ap, format);
 	i = 0;
@@ -88,19 +118,7 @@ int _printf(const char *format, ...)
 		else
 		{
 			if (format[i] == '%')
-			{
-				j = 0;
-				while (prnts[j].c != NULL)
-				{
-					if (format[i + 1] == *prnts[j].c)
-					{
-						prnts[j]._puts(ap, &count);
-						break;
-					}
-					j++;
-				}
-				i += 2;
-			}
+				check_specifiers(ap, format[i], format[i + 1], &count, &i);
 		}
 	}
 	va_end(ap);
