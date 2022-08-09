@@ -60,12 +60,14 @@ void _print_n(char c, char d, unsigned int *i)
 /**
  * check_specifiers - checks for format specifiers and acts accordingly
  * @v: format specifier to be checked
+ * @x: % specifier
  * @ap: variable argument pointer
  * @i: an integer pointer to printf while loop iterator
  * @count: pointer to number of characters printed by printf
  * Return: Nothing
  */
-void check_specifiers(va_list ap, char v, char x, unsigned int *count, unsigned int *i)
+void check_specifiers(va_list ap, char v, char x, unsigned int *count,
+		      unsigned int *i)
 {
 	unsigned int j;
 	prnt_t prnts[] = {
