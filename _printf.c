@@ -123,6 +123,8 @@ int _printf(const char *format, ...)
 				check_specifiers(ap, format[i], format[i + 1], &count, &i);
 		}
 	}
+	if (format == NULL)
+		count = -1;
 	va_end(ap);
 	return (count);
 }
