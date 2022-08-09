@@ -13,8 +13,6 @@ void _print_d(va_list d, unsigned int *count)
 	unsigned int i, counter = 0;
 
 	numbers = va_arg(d, int);
-	if ((numbers / 1000000000) != 0)
-		numbers = 0;
 	if (numbers < 0)
 	{
 		(*count) += _putchar('-');
