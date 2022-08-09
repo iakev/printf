@@ -11,8 +11,6 @@ void _print_c(va_list c, unsigned int *count)
 	char ca;
 
 	ca = va_arg(c, int);
-	if (ca == '\0')
-		return (-1);
 	_putchar(ca);
 	(*count)++;
 }
