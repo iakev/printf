@@ -77,22 +77,32 @@ void check_specifiers(va_list ap, char v, char x, unsigned int *count,
 	};
 
 	j = 0;
-	while (prnts[j].c != NULL)
+	if (x == '\0')
 	{
-		if (x == *prnts[j].c)
-		{
-			prnts[j]._puts(ap, count);
-			break;
+		*count = -1;
+		(*i)++;
+	}
+	else
+	{
+		while (prnts[j].c != NULL)
+		{	
+			if (x == *prnts[j].c)
+			{
+				prnts[j]._puts(ap, count);
+				break;
+			}
+			j++;
 		}
-		j++;
+		if (prnts[j].c == NULL)
+		{
+			_putchar(v);
+			(*count)++;
+		}
+		(*i) += (prnts[j].c  == NULL) ? 1 : 2;
+
 	}
-	if (prnts[j].c == NULL)
-	{
-		_putchar(v);
-		(*count)++;
-	}
-	(*i) += (prnts[j].c  == NULL) ? 1 : 2;
 }
+
 
 /**
  * _printf - main function to print according to a format
