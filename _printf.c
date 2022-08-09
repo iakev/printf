@@ -85,7 +85,7 @@ void check_specifiers(va_list ap, char v, char x, unsigned int *count,
 	else
 	{
 		while (prnts[j].c != NULL)
-		{	
+		{
 			if (x == *prnts[j].c)
 			{
 				prnts[j]._puts(ap, count);
