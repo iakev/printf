@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * _print_d - prints base 10 digits
@@ -14,6 +15,7 @@ void _print_d(va_list d, unsigned int *count)
 	numbers = va_arg(d, int);
 	if (numbers < 0)
 	{
+
 		(*count) += _putchar('-');
 		numbers = -numbers;
 	}
@@ -46,4 +48,33 @@ void _print_d(va_list d, unsigned int *count)
 		(*count) += _putchar(numbers + '0');
 	}
 
+}
+
+/**
+ * _print_b - converts and displays unsigned integers to binary
+ * @b: va_list of the unsigned integer variable
+ * @count: integer pointer to the number of characters printed
+ */
+void _print_b(va_list b, unsigned int *count)
+{
+	unsigned int numbers, counter = 0;
+	int buf[64], i;
+
+	numbers = va_arg(b, unsigned int);
+
+	if (numbers == 0)
+	{
+		(*count) += _putchar(numbers + '0');
+	}
+	while (numbers != 0)
+	{
+		buf[counter] = numbers % 2;
+		numbers /= 2;
+		counter++;
+	}
+	for (i = (counter - 1); i >= 0; i--)
+	{
+		(*count) += _putchar(buf[i] + '0');
+		
+	}
 }

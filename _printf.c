@@ -75,6 +75,7 @@ void check_specifiers(va_list ap, char v, char x, unsigned int *count,
 		{"s", _print_s},
 		{"d", _print_d},
 		{"i", _print_d},
+		{"b", _print_b},
 		{NULL, NULL}
 	};
 

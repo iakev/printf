@@ -2,6 +2,7 @@
 #define MAIN_H
 #include <stdarg.h>
 #include <stdlib.h>
+#include <limits.h>
 int _putchar(char c);
 
 /**
@@ -22,5 +23,6 @@ int _printf(const char *format, ...);
 void _print_n(char c, char d, unsigned int *i);
 void check_specifiers(va_list, char, char, unsigned int *, unsigned int *);
 void _print_d(va_list d, unsigned int *count);
+void _print_b(va_list b, unsigned int *count);
 
 #endif
