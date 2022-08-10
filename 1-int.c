@@ -1,5 +1,5 @@
 #include "main.h"
-#include <stdio.h>
+
 /**
  * _check_INT_MIN - checks and displays the INT_MIN macro
  * @numbers: number to be checked if it's INT_MIN
