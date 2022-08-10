@@ -24,6 +24,6 @@ void _print_n(char c, char d, unsigned int *i);
 void check_specifiers(va_list, char, char, unsigned int *, unsigned int *);
 void _print_d(va_list d, unsigned int *count);
 void _print_b(va_list b, unsigned int *count);
-void print_i(va_list, unsigned int *);
 void _check_INT_MIN(int numbers, unsigned int *count);
+void _print_o(va_list, unsigned int*);
 #endif
