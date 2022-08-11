@@ -77,6 +77,7 @@ void check_specifiers(va_list ap, char v, char x, unsigned int *count,
 		{"i", _print_d},
 		{"b", _print_b},
 		{"o", _print_o},
+		{"x", _print_x},
 		{NULL, NULL}
 	};
 
@@ -133,7 +134,9 @@ int _printf(const char *format, ...)
 		else
 		{
 			if (format[i] == '%')
+			{
 				check_specifiers(ap, format[i], format[i + 1], &count, &i);
+			}
 		}
 	}
 	if (format == NULL)
