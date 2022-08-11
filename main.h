@@ -39,4 +39,5 @@ void _print_b(va_list b, unsigned int *count);
 void _check_INT_MIN(int numbers, unsigned int *count);
 void _print_o(va_list, unsigned int*);
 void _print_x(va_list, unsigned int*);
+void _print_X(va_list, unsigned int*);
 #endif

@@ -113,6 +113,5 @@ void _print_b(va_list b, unsigned int *count)
 	for (i = (counter - 1); i >= 0; i--)
 	{
 		(*count) += _putchar(buf[i] + '0');
-		
 	}
 }

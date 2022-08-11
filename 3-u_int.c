@@ -35,8 +35,7 @@ void _print_o(va_list o, unsigned int *count)
  * @count: pointer to the number of characters printed by _printf
  * Return: Nothing
  */
-
-void _print_x(va_list m, unsigned int *count)
+void _print_x(va_list x, unsigned int *count)
 {
 	unsigned int numbers, counter = 0;
 	int i, j, buf[64];
@@ -49,13 +48,13 @@ void _print_x(va_list m, unsigned int *count)
 		{'f', 15},
 		{'g', 0}
 	};
-	
-	numbers = va_arg(m, unsigned int);
+
+	numbers = va_arg(x, unsigned int);
 	if (numbers == 0)
 	{
 		(*count) += _putchar(numbers + '0');
 	}
-	while (numbers !=0 )
+	while (numbers != 0)
 	{
 		buf[counter] = numbers % 16;
 		numbers /= 16;
@@ -64,9 +63,7 @@ void _print_x(va_list m, unsigned int *count)
 	for (j = (counter - 1); j >= 0; j--)
 	{
 		if (buf[j] <= 9)
-		{
 			(*count) += _putchar(buf[j] + '0');
-		}
 		else
 		{
 			i = 0;
@@ -74,9 +71,56 @@ void _print_x(va_list m, unsigned int *count)
 			while (printx[i].c != 'g')
 			{
 				if (buf[j] == printx[i].n)
-				{
 					(*count) += _putchar(printx[i].c);
-				}
+				i++;
+			}
+		}
+	}
+}
+/**
+ * _print_X - converts unsigned integer to hexadecimals and
+ *		displays it in capital letters
+ * @X: va_list unsigned integer argument
+ * @count: pointer to the number of characters printed by _printf
+ * Return: Nothing
+ */
+void _print_X(va_list X, unsigned int *count)
+{
+	unsigned int numbers, counter = 0;
+	int i, j, buf[64];
+	hex printx[] = {
+		{'A', 10},
+		{'B', 11},
+		{'C', 12},
+		{'D', 13},
+		{'E', 14},
+		{'F', 15},
+		{'g', 0}
+	};
+
+	numbers = va_arg(X, unsigned int);
+	if (numbers == 0)
+	{
+		(*count) += _putchar(numbers + '0');
+	}
+	while (numbers != 0)
+	{
+		buf[counter] = numbers % 16;
+		numbers /= 16;
+		counter++;
+	}
+	for (j = (counter - 1); j >= 0; j--)
+	{
+		if (buf[j] <= 9)
+			(*count) += _putchar(buf[j] + '0');
+		else
+		{
+			i = 0;
+
+			while (printx[i].c != 'g')
+			{
+				if (buf[j] == printx[i].n)
+					(*count) += _putchar(printx[i].c);
 				i++;
 			}
 		}
