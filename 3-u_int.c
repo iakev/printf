@@ -140,6 +140,8 @@ void _print_u(va_list u, unsigned int *count)
 
 	numbers = va_arg(u, unsigned int);
 
+	if (numbers <= 0)
+		(*count) += _putchar(numbers + '0');
 	if (numbers > 9)
 	{
 		temp = numbers;
