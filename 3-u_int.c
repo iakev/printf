@@ -139,8 +139,7 @@ void _print_u(va_list u, unsigned int *count)
 	unsigned int i, counter = 0;
 
 	numbers = va_arg(u, unsigned int);
-
-	if (numbers <= 0)
+	if (numbers <= 1)
 		(*count) += _putchar(numbers + '0');
 	if (numbers > 9)
 	{
