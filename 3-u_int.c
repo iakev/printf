@@ -126,3 +126,42 @@ void _print_X(va_list X, unsigned int *count)
 		}
 	}
 }
+
+/**
+ * _print_u - prints non negative digits
+ * @u: va_list holding the values of the digits
+ * @count: integer pointer to the number of integers printed by _printf
+ * Return: Nothing
+ */
+void _print_u(va_list u, unsigned int *count)
+{
+	unsigned int numbers, temp, div;
+	unsigned int i, counter = 0;
+
+	numbers = va_arg(u, unsigned int);
+
+	if (numbers > 9)
+	{
+		temp = numbers;
+		while (temp != 0)
+		{
+			temp /= 10;
+			counter++;
+		}
+		temp = 1;
+		for (i = 1; i < counter; i++)
+		{
+			temp *= 10;
+		}
+		div = numbers / temp;
+		(*count) += _putchar(div + '0');
+		temp /= 10;
+		while (temp != 1)
+		{
+			div = numbers / temp;
+			(*count) += _putchar((div % 10) + '0');
+			temp /= 10;
+		}
+		(*count) += _putchar((numbers % 10) + '0');
+	}
+}
